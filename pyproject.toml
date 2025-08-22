@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sk-cryptography"                 # install name (what pip registers)
+version = "0.1.0"
+description = "Cryptography utilities by SK (classical, RSA, ECC helpers)."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "SK" }]
+license = { text = "Proprietary" }       # or "MIT", "BSD-3-Clause", etc.
+dependencies = []                        # add any runtime deps here
+
+# Optional but nice to have if you plan to publish later
+keywords = ["cryptography", "RSA", "ECC", "classical-crypto"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Intended Audience :: Developers",
+  "Topic :: Security :: Cryptography",
+]
+
+[project.urls]
+Homepage = "https://example.com"         # optional; update or remove
+Source = "https://example.com/repo"      # optional; update or remove
+Issues = "https://example.com/issues"    # optional; update or remove
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["sk_cryptography*"]           # ensure only your package is included
+
+# ---- Optional: dev extras (install with `pip install -e .[dev]`) ----
+[project.optional-dependencies]
+dev = [
+  "pytest>=7",
+  "ruff>=0.4",        # linter
+  "black>=24.0",      # formatter
+  "mypy>=1.8",        # type checker (optional)
+]
+
+# ---- Optional: Ruff/Black config if you use them ----
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-select = ["E", "F", "I"]          # basic errors/formatter/imports
